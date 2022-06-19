@@ -8,8 +8,6 @@ const ImageComp: React.FC<Types.ImageCompState> = ({src}) => {
             <img className='image' src={src} alt=""/>
             <button className='randomFaceButton'>set random face</button>
         </div>
-
-
     </div>
 }
 

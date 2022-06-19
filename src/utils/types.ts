@@ -3,7 +3,8 @@ export namespace Types {
     export interface State {
         readonly isAuthorized: boolean,
         readonly isLoading: boolean,
-        readonly name: string
+        readonly name: string,
+        readonly joke: string,
     }
     export interface PageTitleState {
         readonly title: string
@@ -21,7 +22,11 @@ export namespace Types {
         payload?: Object
     }
     export interface WelcomeCompProps {
-        setWelcome: (name: string) => void,
+        setWelcomeAction: (name: string) => void,
         name: string
+    }
+    export interface JokeCompProps {
+        setJokeAction: (name: string) => void,
+        joke: string
     }
 }

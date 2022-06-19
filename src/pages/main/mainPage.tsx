@@ -9,6 +9,7 @@ import LoadingTitle from "../../comps/loadingTitle/loadingTitle";
 import PageTitle from "../../comps/PageTitle/pageTitle";
 import WelcomeComp from '../../comps/welcomeComp/welcomeComp'
 import ImageComp from '../../comps/imageComp/imageComp'
+import JokeComp from '../../comps/jokeComp/jokeComp'
 import TestImg from '../../assets/images/testImg.jpg';
 import TestSvg from '../../assets/svg/notification-ico.svg';
 
@@ -21,13 +22,14 @@ const MainPage: React.FC<any> = (props) => {
         <LoadingTitle title='App is loading:' isLoading={props.isLoading}/>
         {props.isLoading && <Loader/>}
         {/*<ImageComp src={TestSvg}/>*/}
+        <JokeComp joke={props.joke}/>
         <ImageComp src={TestImg}/>
         <WelcomeComp name={props.name}/>
     </div>
 };
 
 const mapStateToProps = (state: Types.State) => {
-    return {isLoading: state.isLoading, name: state.name}
+    return {isLoading: state.isLoading, name: state.name, joke: state.joke}
 };
 
 export default connect(mapStateToProps)(MainPage);

@@ -1,0 +1,25 @@
+@use '../../style/style' as styles;
+
+.jokeComp {
+  background-color: styles.$secondary;
+  @include styles.yellowBorder;
+  width: 100%;
+  padding: 20px;
+
+  & .jokeWrapper {
+    min-width: 60%;
+
+
+    & .jokeText {
+      min-height: 50px;
+      padding-bottom: 10px;
+    }
+
+    & .jokeButton {
+      @include styles.purpleButton;
+    }
+    & .jokeButton1 {
+      margin-bottom: 10px;
+    }
+  }
+}
