@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCss = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: "./src/index.html",
@@ -16,6 +17,15 @@ const terserPlugin = new TerserPlugin({
     extractComments: false
 });
 
+const copyPlugin = new CopyPlugin({
+    patterns: [
+        {
+            from: 'stub',
+            to: 'assets/stub',
+            context: 'src/assets'
+        }
+    ]
+});
 
 module.exports = function (_, webpackEnv) {
 
@@ -67,19 +77,26 @@ module.exports = function (_, webpackEnv) {
         use: getStyleLoaders()
     };
 
-    const assetsRule = {
-        test: /\.(jpg|jpeg|png|gif|mp3|mp4|svg)$/,
+    const fontsRule = {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        exclude: [/node_modules/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+        type: "asset/resource",
+        generator: {
+            filename: 'assets/fonts/[name]_[contenthash:8].[ext]'
+        }
+    };
+
+    const imgRule = {
+        test: /\.(jpg|jpeg|png|gif|svg)$/,
         exclude: [/node_modules/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
         use: [{
             loader: 'file-loader',
             options: {
-                outputPath: 'media',
-                name: '[name]_[contenthash:8][ext]'
+                outputPath: 'assets/imgs/',
+                name: '[name]_[contenthash:8].[ext]'
             }
         }]
     };
-
-    console.log(cssRule);
 
     return {
         devtool: isDevelopment ? 'cheap-module-source-map' : false,
@@ -98,13 +115,13 @@ module.exports = function (_, webpackEnv) {
         },
 
         module: {
-            rules: [tsRule, cssRule, assetsRule]
+            rules: [tsRule, cssRule, fontsRule, imgRule]
         },
         optimization: {
             minimize: isProduction,
             minimizer: [terserPlugin],
         },
-        plugins: [htmlWebpackPlugin, miniCss],
+        plugins: [htmlWebpackPlugin, miniCss, copyPlugin],
         devServer: {
             historyApiFallback: true,
         },

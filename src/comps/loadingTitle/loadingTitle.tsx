@@ -1,4 +1,5 @@
 import React from 'react'
+import './loadingTitle.scss'
 
 
 const LoadingTitle: React.FC<{title: string, isLoading:boolean}> = ({title, isLoading}) => {

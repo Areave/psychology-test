@@ -1,0 +1,10 @@
+@use '../style/style' as styles;
+
+#app {
+  overflow-y: scroll;
+
+  & a {
+    @include styles.regularLink;
+    @include styles.shadow;
+  }
+}

@@ -7,7 +7,7 @@
   & .message {
     padding: 20px;
     background-color: styles.$secondary;
-    border: 2px solid styles.$third;
+    @include styles.yellowBorder;
   }
 
   & .code {

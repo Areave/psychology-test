@@ -1,0 +1,23 @@
+@use '../../style/style' as styles;
+
+.imageComp {
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .imageWrapper {
+    @include styles.yellowBorderFull;
+    padding: 20px;
+    background-color: styles.$secondary;
+    max-width: 30%;
+    & img {
+      margin-bottom: 10px;
+    }
+    & .randomFaceButton {
+      @include styles.purpleButton;
+    }
+
+  }
+}

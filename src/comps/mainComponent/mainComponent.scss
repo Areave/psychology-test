@@ -3,7 +3,7 @@
 .mainComponent {
   padding: 20px;
   background-color: styles.$secondary;
-  border: 2px solid styles.$third;
+  @include styles.yellowBorder;
   & .desc {
     padding: 10px;
     @include styles.importantText;

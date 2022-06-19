@@ -6,8 +6,8 @@
 }
 
 @mixin stretch {
-  height: 100%;
   width: 100%;
+  min-height: 100%;
 }
 
 @mixin importantText {
@@ -17,6 +17,39 @@
 
 @mixin shadow {
   box-shadow: 5px 6px 13px -3px rgba(0,0,0,0.67);
+}
+
+@mixin yellowBorder {
+  border-top: 2px solid vars.$third;
+  border-bottom: 2px solid vars.$third;
+}
+@mixin yellowBorderFull {
+  border: 2px solid vars.$third;
+}
+
+@mixin purpleButton {
+  width: 100%;
+  padding: 5px 20px;
+  background-color: vars.$danger;
+  @include shadow;
+
+  &:hover {
+    background-color: vars.$dangerHover;
+    cursor: pointer;
+  }
+}
+
+@mixin regularLink {
+  color: vars.$danger;
+  background: vars.$third;
+  font-weight: bold;
+  padding: 5px;
+  border: black solid 2px;
+
+  &:hover {
+    cursor: pointer;
+    background: vars.$thirdHoover;
+  }
 }
 
 @mixin forRootElements {
