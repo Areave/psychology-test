@@ -107,7 +107,7 @@ module.exports = function (_, webpackEnv) {
         },
 
         output: {
-            path: path.resolve(__dirname, 'www'),
+            path: path.resolve(__dirname, 'public'),
             filename: isDevelopment ? "./js/[name].js" : "./js/[name]_[contenthash:8].js",
             chunkFilename: isDevelopment ? "./js/[name].js" : "./js/[name]_[contenthash:8].js",
             assetModuleFilename: 'assets/[hash][ext]',
