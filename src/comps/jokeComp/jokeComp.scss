@@ -1,13 +1,15 @@
 @use '../../style/style' as styles;
 
 .jokeComp {
-  background-color: styles.$secondary;
-  @include styles.yellowBorder;
-  width: 100%;
-  padding: 20px;
+
+  width: 50%;
+  margin: 0 auto;
 
   & .jokeWrapper {
-    min-width: 60%;
+    background-color: styles.$secondary;
+    @include styles.yellowBorderFull;
+    padding: 20px;
+    margin: 40px;
 
 
     & .jokeText {
@@ -15,11 +17,16 @@
       padding-bottom: 10px;
     }
 
-    & .jokeButton {
-      @include styles.purpleButton;
+    & .buttonWrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      & .actionButton {
+        @include styles.purpleButton;
+        width: 45%;
+      }
     }
-    & .jokeButton1 {
-      margin-bottom: 10px;
-    }
+
+
   }
 }

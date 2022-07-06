@@ -1,22 +1,33 @@
 @use '../../style/style' as styles;
 
 .imageComp {
+  margin: 0 auto;
   padding: 40px;
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  & .imageWrapper {
+  & .pictureCard {
     @include styles.yellowBorderFull;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     background-color: styles.$secondary;
-    max-width: 30%;
-    & img {
-      margin-bottom: 10px;
-    }
-    & .randomFaceButton {
-      @include styles.purpleButton;
+    width: 100%;
+    & .imageWrapper {
+      width: 30vw;
+      height: 30vw;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      & img {
+        height: auto;
+      }
     }
 
   }

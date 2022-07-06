@@ -2,9 +2,4 @@
 
 #app {
   overflow-y: scroll;
-
-  & a {
-    @include styles.regularLink;
-    @include styles.shadow;
-  }
 }

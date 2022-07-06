@@ -1,7 +1,8 @@
 @use '../../style/style' as styles;
 
-.mainComponent {
+.descriptionComp {
   padding: 20px;
+  width: 100%;
   background-color: styles.$secondary;
   @include styles.yellowBorder;
   & .desc {

@@ -10,7 +10,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 });
 
 const miniCss = new MiniCss({
-    filename: 'main.css'
+    filename: 'mainPage.css'
 });
 
 const terserPlugin = new TerserPlugin({

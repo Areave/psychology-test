@@ -2,11 +2,13 @@ import React, {useState, useRef} from 'react'
 import {connect} from 'react-redux'
 import {setWelcomeAction} from "../../utils/store/actionCreators";
 import {Types} from '../../utils/types'
-import './welcomeComp.scss'
+import './typingComp.scss'
 import {useNavigate} from 'react-router'
+import NavigationButton from '../navigationButton/navigationButton';
+import ComponentTitleComp from "../componentTitleComp/componentTitleComp";
 
 
-const WelcomeComp: React.FC<Types.WelcomeCompProps> = (props) => {
+const TypingComp: React.FC<Types.WelcomeCompProps> = (props) => {
     const nameInput = useRef(null);
     const navigate = useNavigate();
     const setName = () => {
@@ -14,13 +16,14 @@ const WelcomeComp: React.FC<Types.WelcomeCompProps> = (props) => {
     }
     return <div className='welcomeComp'>
         <div className="inputWrapper">
+            <ComponentTitleComp title={'Binding data using Redux'}/>
             <input ref={nameInput} type='text' onInput={setName}/>
             <div className="name">you type: {props.name}</div>
         </div>
-        <a className='link' onClick={()=>navigate('/page2')}>go to page 2</a>
+        <NavigationButton title={'go to page 2'} route={'/page2'}/>
     </div>
 }
 
 const mapDispatchToProps = {setWelcomeAction}
 
-export default connect(null, mapDispatchToProps)(WelcomeComp)
+export default connect(null, mapDispatchToProps)(TypingComp)

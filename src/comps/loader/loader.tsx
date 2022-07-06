@@ -3,9 +3,7 @@ import './loader.scss'
 
 const Loader: React.FC = () => {
 
-    return <div className='loaderWrapper'>
-        <span className='loader'></span>
-    </div>
+    return <span className='loader'></span>
 }
 
 export default Loader;

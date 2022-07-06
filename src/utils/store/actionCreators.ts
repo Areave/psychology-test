@@ -12,9 +12,15 @@ export const setJokeAction: (joke: string) => Types.Action = (joke) => {
         payload: joke
     }
 };
-
-export const switchLoading: () => Types.Action = () => {
+export const setError: (errorMessage: string) => Types.Action = (errorMessage) => {
     return {
-        type: 'SET_LOADING'
+        type: 'SET_ERROR',
+        payload: errorMessage
+    }
+};
+export const setImageSrc: (imageSrc: string) => Types.Action = (imageSrc) => {
+    return {
+        type: 'SET_IMAGE_SRC',
+        payload: imageSrc
     }
 };
