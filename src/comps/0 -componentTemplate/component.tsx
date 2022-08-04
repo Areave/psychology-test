@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Types} from "../../utils/types";
-import {ComponentTemplate} from "./ComponentTemplate";
+import {ComponentTemplate} from "./componentTemplate";
 import {connect} from 'react-redux'
 
 const Component = (Comp: React.FC<any>): Types.HOC => {
