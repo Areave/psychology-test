@@ -22,11 +22,8 @@
       display: flex;
       justify-content: space-between;
       & .actionButton {
-        @include styles.purpleButton;
         width: 45%;
       }
     }
-
-
   }
 }

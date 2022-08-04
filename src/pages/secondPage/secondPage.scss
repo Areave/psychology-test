@@ -1,5 +1,17 @@
 @use '../../style/style' as styles;
 
-.page2 {
+.secondPage {
   @include styles.forRootElements;
+
+  & .header {
+    @include styles.forHeader;
+  }
+
+  & .content {
+    @include styles.forContent;
+  }
+
+  & .footer {
+    @include styles.forFooter;
+  }
 }

@@ -2,10 +2,7 @@ import React from 'react'
 import './componentTemplate.scss'
 import {Types} from '../../utils/types'
 
-const ComponentTemplate: React.FC = () => {
-
+export const ComponentTemplate: React.FC<Types.ComponentProps> = (props) => {
     return <div className='componentName'>
     </div>
-}
-
-export default ComponentTemplate;
+};

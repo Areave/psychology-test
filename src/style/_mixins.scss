@@ -1,5 +1,17 @@
 @use 'variables' as vars;
 
+// size mixins
+
+@mixin forRootElements {
+  @include stretch;
+  background-color: vars.$primary;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+}
+
 @mixin square($val) {
   height: $val;
   width: $val;
@@ -10,22 +22,8 @@
   min-height: 100%;
 }
 
-@mixin importantText {
-  font-size: 2rem;
-  font-weight: bold;
-}
 
-@mixin shadow {
-  box-shadow: 5px 6px 13px -3px rgba(0,0,0,0.67);
-}
-
-@mixin yellowBorder {
-  border-top: 2px solid vars.$third;
-  border-bottom: 2px solid vars.$third;
-}
-@mixin yellowBorderFull {
-  border: 2px solid vars.$third;
-}
+// components mixins
 
 @mixin purpleButton {
   padding: 5px 20px;
@@ -51,8 +49,40 @@
   }
 }
 
-@mixin forRootElements {
-  @include stretch;
-  background-color: vars.$primary;
-  text-align: center;
+@mixin forHeader {
+  width: 100%;
+}
+
+@mixin forContent {
+  flex-grow: 1;
+}
+
+@mixin forFooter {
+  background-color: vars.$secondary;
+  @include yellowBorder;
+  border-bottom:none;
+  width: 100%;
+  padding: 20px;
+}
+
+
+
+
+// build mixins
+
+@mixin shadow {
+  box-shadow: 5px 6px 13px -3px rgba(0,0,0,0.67);
+}
+
+@mixin importantText {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@mixin yellowBorder {
+  border-top: 2px solid vars.$third;
+  border-bottom: 2px solid vars.$third;
+}
+@mixin yellowBorderFull {
+  border: 2px solid vars.$third;
 }

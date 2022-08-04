@@ -1,47 +1,50 @@
-import React, {useEffect, useState} from 'react'
-import './jokeComp.scss'
-import {Types} from '../../utils/types'
-import apiService from '../../utils/apiService'
+import * as React from "react";
+import {Types} from "../../utils/types";
+import apiService from "../../utils/apiService";
+import {useState} from "react";
+import {useEffect} from "react";
+import {JokeTemplate} from "./jokeTemplate";
 import {connect} from 'react-redux'
 import {setJokeAction} from "../../utils/store/actionCreators";
-import ActionButton from "../actionButton/actionButton";
-import ComponentTitleComp from "../componentTitleComp/componentTitleComp";
 
-const JokeComp: React.FC<Types.JokeCompProps> = ({joke, setJokeAction}) => {
+const JokeHOC = (Comp: React.FC<any>): Types.HOC => {
 
-    const [joke1, setJoke1] = useState();
+  // @ts-ignore
+    return ({setJokeAction, joke}) => {
 
-    const dowloadJokeHook:any = () => {
-        apiService.getRandomJoke().then((joke: any) => {
-            setJoke1(joke);
-            setJokeAction('');
+      const [joke1, setJoke1] = useState();
 
-        })
-    };
-    useEffect(()=>{dowloadJokeHook()}, []);
+      const downloadJokeHook:any = () => {
+          apiService.getRandomJoke().then((joke: any) => {
+              setJoke1(joke);
+              setJokeAction('');
+          })
+      };
 
-    const dowloadJokeRedux = () => {
-        apiService.getRandomJoke().then((joke: any) => {
-            setJokeAction(joke);
-            setJoke1(undefined);
-        })
-    };
+      const downloadJokeRedux = () => {
+          apiService.getRandomJoke().then((joke: any) => {
+              setJokeAction(joke);
+              setJoke1(undefined);
+          })
+      };
 
-    return <div className='jokeComp'>
-        <div className="jokeWrapper">
-            <ComponentTitleComp title={'Async download data and render it using redux or useState hook'}/>
-            <div className="jokeText">{joke || joke1}</div>
-            <div className="buttonWrapper">
-                <ActionButton onClick={dowloadJokeHook} label={'using hooks'}/>
-                <ActionButton onClick={dowloadJokeRedux} label={'using redux'}/>
-            </div>
+      useEffect(()=>{downloadJokeHook()}, []);
 
-        </div>
-    </div>
+      const compProps: Types.JokeCompProps = {
+          joke: joke || joke1,
+          loadJokeUsingHook: downloadJokeHook,
+          loadJokeUsingRedux: downloadJokeRedux
+      };
+
+      return <Comp {...compProps}/>
+  }
+}
+
+const mapStateToProps = (state: Types.State) => {
+    return {joke: state.joke}
 };
-
 const mapDispatchToProps = {setJokeAction};
-// wich means
+// which means
 // const mapDispatchToProps = (dispatch: any) => {
 //     return {
 //         setJokeAction: () => {
@@ -49,8 +52,6 @@ const mapDispatchToProps = {setJokeAction};
 //         }
 //     }
 // }
-const mapStateToProps = (state: Types.State) => {
-    return {joke: state.joke}
-};
+// const JokeComp = JokeHOC(JokeTemplate);
 
-export default connect(mapStateToProps, mapDispatchToProps)(JokeComp);
+export const JokeComp = connect(mapStateToProps, mapDispatchToProps)(JokeHOC(JokeTemplate));

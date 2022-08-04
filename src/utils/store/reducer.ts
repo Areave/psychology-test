@@ -15,7 +15,7 @@ const reducer = (state: Types.State, action: Types.Action) => {
         case 'SET_IMAGE_SRC':
             return {...state, imageSrc: action.payload};
         case 'SET_ERROR':
-            return {...state, isError: !state.isError, errorMessage: action.payload};
+            return {...state, isError: action.payload.isError, errorMessage: action.payload.errorMessage};
     }
     return initialState;
 }

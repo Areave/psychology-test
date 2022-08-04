@@ -4,30 +4,25 @@ import {Types} from '../../utils/types'
 import {connect} from 'react-redux'
 import DescriptionComp from "../../comps/descriptionComp/descriptionComp";
 import PageTitleComp from "../../comps/pageTitleComp/pageTitleComp";
-import TypingComp from '../../comps/typingComp/typingComp'
-import ImageComp from '../../comps/imageComp/imageComp'
-import JokeComp from '../../comps/jokeComp/jokeComp'
-// import TestImg from '../../assets/images/testImg.jpg';
-import TestSvg from '../../assets/svg/notification-ico.svg';
-import ErrorBoundary from "../errorBoundary/errorBoundary";
-import {isError} from "util";
-import {symlink} from "fs";
+import {JokeComp} from "../../comps/jokeComp/jokeComp";
+import NavigationButton from "../../comps/navigationButton/navigationButton";
+import {ComponentTemplate} from "../../comps/0 -componentTemplate/componentTemplate";
+
 
 
 const MainPage: React.FC<any> = (props) => {
     return <div className="mainPage">
-        <PageTitleComp title={'React Webpack Template'}/>
-        <DescriptionComp/>
-        <ErrorBoundary>
-            <ImageComp/>
-        </ErrorBoundary>
-        {/*<ErrorBoundary>*/}
-        {/*    <BuggyCounter/>*/}
-        {/*</ErrorBoundary>*/}
+        <div className="header">
+            <PageTitleComp title={'React Webpack Template'}/>
+            <DescriptionComp/>
+        </div>
+        <div className="content">
+            <JokeComp/>
+        </div>
+        <div className="footer">
+            <NavigationButton title={'go to second page'} route={'/secondPage'}/>
+        </div>
 
-
-        <JokeComp/>
-        <TypingComp name={props.name}/>
     </div>
 };
 

@@ -7,9 +7,9 @@ const MyRouter = () => {
     return <BrowserRouter>
         <Routes>
             <Route path='/' element={<MainPage/>}/>
-            <Route path='/page2' element={<SecondPage/>}/>
+            <Route path='/secondPage' element={<SecondPage/>}/>
         </Routes>
     </BrowserRouter>
-}
+};
 
 export default MyRouter;

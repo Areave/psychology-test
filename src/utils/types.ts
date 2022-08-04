@@ -1,4 +1,5 @@
-import React from "react";
+import React, {ReactElement} from "react";
+import {setError} from "./store/actionCreators";
 
 export namespace Types {
 
@@ -11,23 +12,31 @@ export namespace Types {
         readonly imageSrc: string,
         readonly errorMessage: string
     }
-    export interface PageTitleState {
-        readonly title: string
-    }
-    export interface ImageCompState {
-        readonly imageSrc: string,
-        readonly setImageSrc: (imageSrc: string) => void,
-        readonly setError: (errorMessage: string) => void
-    }
+
     export interface Action {
         type: string,
-        payload?: Object
+        payload?: any
     }
-    export interface WelcomeCompProps {
-        setWelcomeAction: (name: string) => void,
-        name: string
+
+    export type HOC = (props: any) => ReactElement<any>
+
+    export interface ErrorPageProps {
+        isError: boolean,
+        children?: React.ReactNode,
+        errorMessage?: string,
+        setError: (isError: boolean, errorMessage?: string) => void
+
     }
-    export interface componentTitleCompProps {
+    export interface PageTitleProps {
+        readonly title: string
+    }
+    export interface ImageCompProps {
+        readonly imageSrc: string,
+        readonly setImageSrc: (imageSrc: string) => void,
+        readonly setError: (isError: boolean, errorMessage?: string) => void
+    }
+
+    export interface ComponentTitleCompProps {
         title: string
     }
     export interface NavigationButtonProps {
@@ -35,22 +44,14 @@ export namespace Types {
         title: string
     }
     export interface ActionButtonProps {
-        onClick: () => any,
+        onClick: (arg?: any) => void,
         label: string
     }
-    export interface ErrorState {
-        isError: boolean,
-        children?: React.ReactNode,
-        errorMessage?: string,
-        errorInfo?: any
-
-    }
-    export interface ErrorPageProps {
-        errorMessage: string,
-        errorStack: any
-    }
     export interface JokeCompProps {
-        setJokeAction: (name: string) => void,
+        loadJokeUsingRedux: (joke: string) => void,
+        loadJokeUsingHook: (joke: string) => void,
         joke: string
+    }
+    export interface ComponentProps {
     }
 }

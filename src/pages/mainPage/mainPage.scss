@@ -2,8 +2,16 @@
 
 .mainPage {
   @include styles.forRootElements;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+
+  & .header {
+    @include styles.forHeader;
+  }
+
+  & .content {
+    @include styles.forContent;
+  }
+
+  & .footer {
+    @include styles.forFooter;
+  }
 }

@@ -12,7 +12,7 @@ import Loader from "../loader/loader";
 const imgSrcDefault = 'https://www.thispersondoesnotexist.com/image';
 const fileName = '../../assets/images/randomFace.jpg'
 
-const ImageComp: React.FC<Types.ImageCompState> = ({imageSrc, setImageSrc, setError}) => {
+const ImageComp: React.FC<Types.ImageCompProps> = ({imageSrc, setImageSrc, setError}) => {
 
     useEffect(()=>{setNewImageSrc()}, []);
 
@@ -26,7 +26,7 @@ const ImageComp: React.FC<Types.ImageCompState> = ({imageSrc, setImageSrc, setEr
 
     const throwError = () => {
         // throw new Error('app crashed!');
-        setError('234');
+        setError(true, '234');
 
     };
     const downloadImage = async () => {

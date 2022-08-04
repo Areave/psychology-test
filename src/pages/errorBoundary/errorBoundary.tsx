@@ -1,11 +1,12 @@
 import React from 'react';
 import ErrorPage from './errorPage';
 import {Types} from '../../utils/types'
-import {setError, setImageSrc} from "../../utils/store/actionCreators";
+import {setError} from "../../utils/store/actionCreators";
 import {connect} from "react-redux";
+import {cli} from "webpack";
 
 
-const ErrorBoundary: React.FC<Types.ErrorState> = (props) =>  {
+const ErrorBoundary: React.FC<Types.ErrorPageProps> = ({isError, errorMessage, children, setError}) =>  {
     // constructor(props: any) {
     //     super(props);
     //     this.state = {
@@ -22,19 +23,24 @@ const ErrorBoundary: React.FC<Types.ErrorState> = (props) =>  {
     //
     // }
 
+    const clickHandler = () => {
+        setError(false);
+    };
+
 
     // render() {
-        if (props.isError) {
+        if (isError) {
             // return <ErrorPage errorMessage={this.state.error.toString()} errorStack={this.state.errorInfo.componentStack}/>
-            return <h1>ERRORRRR</h1>
+            return <h1 onClick={clickHandler}>ERRORRRR: {errorMessage}</h1>
         }
-        return <>{props.children}</>
+        return <>{children}</>
     // }
 };
 
 
 const mapStateToProps = (state: Types.State) => {
-    return {isError: state.isError}
+    return {isError: state.isError, errorMessage: state.errorMessage}
 };
+const mapDispatchToProps = {setError};
 
-export default connect(mapStateToProps)(ErrorBoundary);
+export default connect(mapStateToProps, mapDispatchToProps)(ErrorBoundary);

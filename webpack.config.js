@@ -22,7 +22,8 @@ const copyPlugin = new CopyPlugin({
         {
             from: 'stub',
             to: 'assets/stub',
-            context: 'src/assets'
+            context: 'src/assets',
+            noErrorOnMissing: true
         }
     ]
 });
@@ -124,6 +125,7 @@ module.exports = function (_, webpackEnv) {
         plugins: [htmlWebpackPlugin, miniCss, copyPlugin],
         devServer: {
             historyApiFallback: true,
+            port: 3000
         },
 
         // watch: true
