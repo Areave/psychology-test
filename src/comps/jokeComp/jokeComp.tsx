@@ -41,7 +41,7 @@ const JokeHOC = (Comp: React.FC<any>): Types.HOC => {
 }
 
 const mapStateToProps = (state: Types.State) => {
-    return {joke: state.joke}
+    // return {joke: state.joke}
 };
 const mapDispatchToProps = {setJokeAction};
 // which means
@@ -52,6 +52,6 @@ const mapDispatchToProps = {setJokeAction};
 //         }
 //     }
 // }
-// const JokeComp = JokeHOC(JokeTemplate);
+// const QuestionComp = JokeHOC(JokeTemplate);
 
-export const JokeComp = connect(mapStateToProps, mapDispatchToProps)(JokeHOC(JokeTemplate));
+// export const JokeComp = connect(mapStateToProps, mapDispatchToProps)(JokeHOC(JokeTemplate));

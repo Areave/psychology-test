@@ -20,9 +20,10 @@
     & .buttonWrapper {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       & .actionButton {
         width: 45%;
+        margin: 0 15px;
       }
     }
   }

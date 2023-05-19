@@ -7,6 +7,6 @@ const ActionButton: React.FC<Types.ActionButtonProps> = ({label, onClick}) => {
                    onClick={onClick}>
         {label}
     </button>
-}
+};
 
 export default ActionButton;

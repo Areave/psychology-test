@@ -33,6 +33,9 @@
   &:hover {
     background-color: vars.$dangerHover;
     cursor: pointer;
+  }&:focus {
+    background-color: vars.$danger;
+    cursor: pointer;
   }
 }
 
@@ -77,6 +80,11 @@
 @mixin importantText {
   font-size: 2rem;
   font-weight: bold;
+}
+
+@mixin regularText {
+  font-size: 2rem;
+  font-weight: regular;
 }
 
 @mixin yellowBorder {

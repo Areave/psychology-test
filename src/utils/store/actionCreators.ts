@@ -12,6 +12,12 @@ export const setJokeAction: (joke: string) => Types.Action = (joke) => {
         payload: joke
     }
 };
+export const setQuestionList: (questionList: Types.Question[]) => Types.Action = (questionList) => {
+    return {
+        type: 'SET_QUESTION_LIST',
+        payload: questionList
+    }
+};
 export const setError = (isError: boolean, errorMessage?: string): Types.Action => {
     return {
         type: 'SET_ERROR',
